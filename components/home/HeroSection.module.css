@@ -1,0 +1,189 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: var(--color-white);
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1565552643983-c23f773afbd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* CSS Parallax */
+    z-index: -3;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+            rgba(10, 10, 10, 0.6) 0%,
+            rgba(0, 0, 0, 0.75) 40%,
+            rgba(7, 14, 11, 0.92) 100%);
+    z-index: -2;
+}
+
+/* Subtle animated grain/noise overlay */
+.overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.canvasContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.content {
+    text-align: center;
+    max-width: 920px;
+    position: relative;
+    z-index: 10;
+    margin-top: 40px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    background: rgba(200, 164, 93, 0.12);
+    color: var(--color-accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(200, 164, 93, 0.25);
+    animation: fadeInUp 0.8s ease-out forwards;
+    text-transform: uppercase;
+}
+
+.headline {
+    margin-bottom: 28px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 680px;
+    margin: 0 auto 44px;
+    font-size: 18px;
+    line-height: 1.8;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.buttons .btn {
+    padding: 16px 36px;
+    font-size: 16px;
+    border-radius: var(--radius-full);
+}
+
+.statsBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 28px 0;
+    background: linear-gradient(to top, rgba(7, 14, 11, 0.95), rgba(7, 14, 11, 0.6), transparent);
+    z-index: 10;
+    animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statValue {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1.2;
+    background: linear-gradient(135deg, #C8A45D, #E8CC8C, #C8A45D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.statLabel {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.statDivider {
+    width: 1px;
+    height: 44px;
+    background: linear-gradient(to bottom, transparent, rgba(200, 164, 93, 0.4), transparent);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+    }
+
+    .content {
+        padding: 0 8px 100px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        padding: 0 24px;
+    }
+
+    .statsBar {
+        padding: 20px 0;
+    }
+
+    .statValue {
+        font-size: 26px;
+    }
+
+    .statLabel {
+        font-size: 11px;
+    }
+
+    .statDivider {
+        display: none;
+    }
+}

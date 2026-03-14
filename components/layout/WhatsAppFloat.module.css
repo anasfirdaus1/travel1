@@ -1,0 +1,76 @@
+.floatBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    color: white;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(200, 164, 93, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floatBtn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    animation: pulse-gold 2.5s infinite;
+}
+
+.floatBtn:hover {
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 10px 30px rgba(200, 164, 93, 0.5);
+    animation: none;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Tooltip */
+.floatBtn::before {
+    content: 'Chat Sekarang!';
+    position: absolute;
+    right: 76px;
+    padding: 8px 16px;
+    background: var(--color-bg-dark);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.floatBtn:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .floatBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .floatBtn::before {
+        display: none;
+    }
+}

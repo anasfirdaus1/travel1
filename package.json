@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.577.0",
+    "next": "15.0.0",
     "react": "19.0.0-rc-65a56d0e-20241020",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
-    "next": "15.0.0"
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "eslint": "^8",

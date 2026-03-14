@@ -1,0 +1,213 @@
+.section {
+    padding: 110px 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg);
+    /* Fallback */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.filterMenu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.filterBtn {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 10px 28px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.filterBtn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.filterBtn.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 6px 20px rgba(10, 10, 10, 0.25);
+    transform: translateY(-2px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    min-height: 400px;
+}
+
+.galleryItem {
+    position: relative;
+    height: 300px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    /* CSS fallback */
+    animation: scaleIn 0.5s ease-out both;
+}
+
+.galleryItem:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.galleryItem:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.galleryItem:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.galleryItem:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.galleryItem:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.galleryItem:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 10, 0.85) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.galleryItem:hover .image {
+    transform: scale(1.12);
+}
+
+.galleryItem:hover .overlay {
+    opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(7, 14, 11, 0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.lightboxContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 80vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 991px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .galleryItem {
+        height: 260px;
+    }
+}
+
+/* ===== Video Background ===== */
+.videoBackground {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.videoElement {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.videoOverlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(245, 243, 239, 0.55) 0%, rgba(250, 248, 244, 0.40) 50%, rgba(245, 243, 239, 0.55) 100%);
+    z-index: 1;
+}

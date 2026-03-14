@@ -1,33 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-primary: #0A0A0A;
+  --color-primary-light: #1A1A1A;
+  --color-primary-dark: #000000;
+  --color-accent: #C8A45D;
+  --color-accent-light: #D4B778;
+  --color-accent-dark: #A8873D;
+  --color-bg: #F5F3EF;
+  --color-bg-cream: #FAF8F4;
+  --color-bg-dark: #070E0B;
+  --color-text: #1A1A1A;
+  --color-text-light: #6B6B6B;
+  --color-white: #FFFFFF;
+  --color-border: rgba(200, 164, 93, 0.15);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  --shadow-sm: 0 2px 8px rgba(10, 10, 10, 0.06);
+  --shadow-md: 0 8px 24px rgba(10, 10, 10, 0.08);
+  --shadow-lg: 0 16px 48px rgba(10, 10, 10, 0.12);
+  --shadow-xl: 0 24px 64px rgba(10, 10, 10, 0.16);
+  --shadow-gold: 0 8px 32px rgba(200, 164, 93, 0.25);
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -35,8 +56,414 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Typography ===== */
+.h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.small-text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== Utility Classes ===== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-text-light {
+  color: var(--color-text-light);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+}
+
+.bg-light {
+  background-color: var(--color-bg);
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Section Header Styling ===== */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: var(--color-white);
+  box-shadow: 0 4px 16px rgba(14, 59, 46, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(14, 59, 46, 0.4);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  color: var(--color-white);
+  box-shadow: 0 4px 16px rgba(200, 164, 93, 0.3);
+}
+
+.btn-accent:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  backdrop-filter: blur(4px);
+}
+
+.btn-outline-gold:hover {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ===== Gold Decorative Divider ===== */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
+/* ===== Islamic Geometric Pattern ===== */
+.islamic-pattern-bg {
+  position: relative;
+}
+
+.islamic-pattern-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L60 20 40 40 20 20z M0 40L20 20 40 40 20 60z M80 40L60 20 40 40 60 60z M40 80L60 60 40 40 20 60z' fill='%23C8A45D' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+  z-index: 0;
+  pointer-events: none;
+}
+
+.islamic-pattern-bg>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== CSS Keyframes ===== */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
   }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes pulse-gold {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 164, 93, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 20px rgba(200, 164, 93, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 164, 93, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* CSS Animation Fallback Classes — used when GSAP fails to load */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Stagger delays */
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-lg);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-dark);
 }
